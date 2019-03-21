@@ -6,7 +6,7 @@
   "package_url":     "https://cloudbase.it/downloads/openvswitch-hyperv-installer-beta.msi",
   "install": {
       "priority": 100,
-      "commands": ["msiexec /i \bin\openvswitch-hyperv.msi ADDLOCAL=\"OpenvSwitchCLI,OpenvSwitchDriver,OVNHost\" /qn /l*v log.txt"]
+      "commands": ["msiexec /i \\bin\\openvswitch-hyperv.msi ADDLOCAL=\"OpenvSwitchCLI,OpenvSwitchDriver,OVNHost\" /qn /l*v log.txt"]
       "reboot":   "no"
       }
   "uninstall": {
