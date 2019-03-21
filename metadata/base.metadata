@@ -6,20 +6,24 @@
   "package_url":     "",
   "install": {
       "priority": 100,
-      "commands": []
+      "commands": [],
+      "reboot":   "no"
       }
   "uninstall": {
       "priority": 100,
-      "commands": []
+      "commands": [],
+      "reboot":   "no"
       }
   "pre_upgrade": {
       "priority": 100,
       "uninstall": "no",
-      "commands": []
+      "commands": [],
+      "reboot":   "no"
       }
   "post_upgrade": {
       "priority": 100,
-      "commands": []
+      "commands": [],
+      "reboot":   "no"
       }
   "files": []
 }
