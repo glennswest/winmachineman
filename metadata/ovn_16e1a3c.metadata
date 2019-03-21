@@ -1,0 +1,29 @@
+{
+  "name":          "kubeovn",
+  "version":       "16e1a3c",
+  "description":    "kubeovn - kubernets sdn using OpenVswitch",
+  "install_message": "Using Kubeovn from https://github.com/glennswest/ovn-kubernetes - Commit 16e1a3c",
+  "package_url":     "https://github.com/glennswest/ovn-kubernetes",
+  "install": {
+      "priority": 100,
+      "commands": [],
+      "reboot":   "no"
+      }
+  "uninstall": {
+      "priority": 100,
+      "commands": [],
+      "reboot":   "no"
+      }
+  "pre_upgrade": {
+      "priority": 100,
+      "uninstall": "no",
+      "commands": [],
+      "reboot":   "no"
+      }
+  "post_upgrade": {
+      "priority": 100,
+      "commands": [],
+      "reboot":   "no"
+      }
+  "files": []
+}
