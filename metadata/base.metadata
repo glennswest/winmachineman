@@ -1,0 +1,25 @@
+{
+  "name":          "",
+  "version":       "",
+  "description":    "",
+  "install_message": "",
+  "package_url":     "",
+  "install": {
+      "priority": 100,
+      "commands": []
+      }
+  "uninstall": {
+      "priority": 100,
+      "commands": []
+      }
+  "pre_upgrade": {
+      "priority": 100,
+      "uninstall": "no",
+      "commands": []
+      }
+  "post_upgrade": {
+      "priority": 100,
+      "commands": []
+      }
+  "files": []
+}
