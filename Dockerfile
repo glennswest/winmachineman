@@ -5,6 +5,7 @@ WORKDIR /go/src/github.com/go-chi/chi
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -ldflags  '-extldflags "-static"' .
 WORKDIR /go/src/github.com/glennswest/winmachineman/winmachineman
 RUN  CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -ldflags '-extldflags "-static"' .
+RUN chmod +x winmachineman
 
 FROM scratch
 VOLUME /tmp
