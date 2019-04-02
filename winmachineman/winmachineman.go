@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
+        select{ } // Block Forever
 	r := chi.NewRouter()
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("welcome"))
