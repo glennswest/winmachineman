@@ -9,5 +9,5 @@ VOLUME /tmp
 WORKDIR /root/
 COPY --from=builder /go/bin/winmachineman /go/bin/winmachineman
 COPY commit.id commit.id
-EXPOSE 80
+EXPOSE 8080
 ENTRYPOINT ["/go/bin/winmachineman"]
