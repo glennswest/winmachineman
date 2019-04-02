@@ -1,6 +1,6 @@
 FROM registry.svc.ci.openshift.org/openshift/release:golang-1.10 as builder
 RUN go get github.com/glennswest/winmachineman/winmachineman
-WORKDIR /go/src/github.com/glennswest/winmacineman/winmachineman
+WORKDIR /go/src/github.com/glennswest/winmachineman/winmachineman
 RUN  CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -ldflags '-extldflags "-static"' .
 
 FROM scratch
