@@ -6,6 +6,6 @@ RUN  CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -ldflags '-extldflags "-s
 FROM scratch
 VOLUME /tmp
 WORKDIR /root/
-COPY --from=builder /go/src/github.com/glennswest/winoperator/winmachineman/winmachineman /root/winmachineman
+COPY --from=builder /go/src/github.com/glennswest/winmachineman/winmachineman /root/winmachineman
 COPY commit.id commit.id
 ENTRYPOINT ["/root/winmachineman"]
