@@ -56,7 +56,12 @@ func HumanUI(w http.ResponseWriter, r *http.Request) {
 
 // Install a New Machine
 func CreateMachine(w http.ResponseWriter, r *http.Request) { 
-    log.Printf("CreateMachine: %s - %s\n",r.Body,r.Request)
+    log.Printf("CreateMachine: %s\n",r.Body,)
+    if err := r.ParseForm(); err != nil {
+            log.Printf("ParseForm() err: %v", err)
+            } else {
+             log.Printf("Post from website! r.PostFrom = %v\n", r.PostForm)
+            }
     respondwithJSON(w, http.StatusCreated, map[string]string{"message": "successfully created"})
 }
 
