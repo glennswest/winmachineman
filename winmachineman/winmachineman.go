@@ -2,6 +2,8 @@ package main
 
 import (
 	"net/http"
+        "io"
+	"io/ioutil"
 	"github.com/go-chi/chi"
         "github.com/go-chi/chi/middleware"
          "encoding/json"
@@ -57,11 +59,14 @@ func HumanUI(w http.ResponseWriter, r *http.Request) {
 // Install a New Machine
 func CreateMachine(w http.ResponseWriter, r *http.Request) { 
     log.Printf("CreateMachine: %s\n",r.Body,)
-    if err := r.ParseForm(); err != nil {
-            log.Printf("ParseForm() err: %v", err)
-            } else {
-             log.Printf("Post from website! r.PostFrom = %v\n", r.PostForm)
-            }
+        body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
+	if err != nil {
+		panic(err)
+	}
+	if err := r.Body.Close(); err != nil {
+		panic(err)
+	}
+    log.Printf("JSON: %s\n",body)
     respondwithJSON(w, http.StatusCreated, map[string]string{"message": "successfully created"})
 }
 
