@@ -6,6 +6,8 @@ import (
 	"io/ioutil"
 	"github.com/go-chi/chi"
         "github.com/go-chi/chi/middleware"
+        "github.com/tidwall/gjson"
+        "strings"
          "encoding/json"
          "fmt"
          "log"
@@ -72,7 +74,8 @@ func CreateMachine(w http.ResponseWriter, r *http.Request) {
 	if err := r.Body.Close(); err != nil {
 		panic(err)
 	}
-    log.Printf("JSON: %s\n",body)
+    v := string(body)
+    log.Printf("JSON: %s\n",v)
     hostname := GetLabel(v,`kubernetes\.io/hostname`)
     go MachineCreate(hostname, v)
     respondwithJSON(w, http.StatusCreated, map[string]string{"message": "successfully created"})
