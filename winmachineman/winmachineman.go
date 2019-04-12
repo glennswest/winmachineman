@@ -7,6 +7,7 @@ import (
 	"github.com/go-chi/chi"
         "github.com/go-chi/chi/middleware"
         "github.com/tidwall/gjson"
+        "github.com/glennswest/libpowershell/pshell"
         "strings"
          "os"
          "encoding/json"
@@ -64,7 +65,11 @@ func MachineCreate(hostname string,data string) {
     os.MkdirAll("/data/" + hostname,0700)
     username := GetSetting(data,"user")
     password := GetSetting(data,"password")
-    log.Printf("Username: %s Password: %s\n:",username,password)
+    hostip   := GetAnnotation(data,"host/ip")
+    //log.Printf("Username: %s Password: %s\n:",username,password)
+    pshell.SetRemoteMode(hostip,username,password)
+    version := pshell.GetWinVersion()
+    log.Printf("Version: %s\n",version)
 
 }
 
@@ -124,6 +129,15 @@ func respondwithJSON(w http.ResponseWriter, code int, payload interface{}) {
 
 func GetLabel(v string,l string) string{
     result := gjson.Get(v,"labels.#." + l)
+    x := result.String()
+    x = strings.Replace(x, "[", "", -1)
+    x = strings.Replace(x, "]", "", -1)
+    x = strings.Replace(x, `"`, "", -1)
+    return x
+}
+ 
+func GetAnnotation(v string,l string) string{
+    result := gjson.Get(v,"annotations.#." + l)
     x := result.String()
     x = strings.Replace(x, "[", "", -1)
     x = strings.Replace(x, "]", "", -1)
