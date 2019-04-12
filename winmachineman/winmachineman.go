@@ -69,6 +69,10 @@ func MachineCreate(hostname string,data string) {
     //log.Printf("Username: %s Password: %s\n:",username,password)
     pshell.SetRemoteMode(hostip,username,password)
     version := pshell.GetWinVersion()
+    if (version == ""){
+       log.Printf("Node: %s(%s) not accessable - install aborted\n",hostname,hostip)
+       return
+       } 
     log.Printf("Version: %s\n",version)
 
 }
