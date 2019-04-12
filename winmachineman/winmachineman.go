@@ -8,6 +8,7 @@ import (
         "github.com/go-chi/chi/middleware"
         "github.com/tidwall/gjson"
         "strings"
+         "os"
          "encoding/json"
          "fmt"
          "log"
@@ -60,6 +61,10 @@ func HumanUI(w http.ResponseWriter, r *http.Request) {
 func MachineCreate(hostname string,data string) {
 
     log.Printf("CreateMachine: %s\n",hostname)
+    os.MkdirAll("/data/" + hostname,0700)
+    username := GetSetting(data,"user")
+    password := GetSetting(data,"password")
+    log.Printf("Username: %s Password: %s\n:",username,password)
 
 }
 
@@ -119,6 +124,15 @@ func respondwithJSON(w http.ResponseWriter, code int, payload interface{}) {
 
 func GetLabel(v string,l string) string{
     result := gjson.Get(v,"labels.#." + l)
+    x := result.String()
+    x = strings.Replace(x, "[", "", -1)
+    x = strings.Replace(x, "]", "", -1)
+    x = strings.Replace(x, `"`, "", -1)
+    return x
+}
+
+func GetSetting(v string,l string) string{
+    result := gjson.Get(v,"settings.#." + l)
     x := result.String()
     x = strings.Replace(x, "[", "", -1)
     x = strings.Replace(x, "]", "", -1)
