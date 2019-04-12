@@ -55,8 +55,14 @@ func HumanUI(w http.ResponseWriter, r *http.Request) {
 }
 
 
+func MachineCreate(hostname string,data string) {
+
+    log.Printf("CreateMachine: %s\n",hostname)
+
+}
 
 // Install a New Machine
+// {"settings":[{"user","Administrator"},{"password","SuperLamb931"}],"version": 1, "labels": [{"beta.kubernetes.io/arch","amd64"},{"beta.kubernetes.io/os","windows"},{"kubernetes.io/hostname","winnode01"},{"node-role.kubernetes.io/compute","true"}], "annotations": [{"ovn_host_subnet","10.128.1.0/24"},{"volumes.kubernetes.io/controller-managed-attach-detach","true"}]}
 func CreateMachine(w http.ResponseWriter, r *http.Request) { 
     log.Printf("CreateMachine: %s\n",r.Body,)
         body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
@@ -67,6 +73,8 @@ func CreateMachine(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
     log.Printf("JSON: %s\n",body)
+    hostname := GetLabel(v,`kubernetes\.io/hostname`)
+    go MachineCreate(hostname, v)
     respondwithJSON(w, http.StatusCreated, map[string]string{"message": "successfully created"})
 }
 
@@ -103,5 +111,15 @@ func respondwithJSON(w http.ResponseWriter, code int, payload interface{}) {
     w.Header().Set("Content-Type", "application/json")
     w.WriteHeader(code)
     w.Write(response)
+}
+
+
+func GetLabel(v string,l string) string{
+    result := gjson.Get(v,"labels.#." + l)
+    x := result.String()
+    x = strings.Replace(x, "[", "", -1)
+    x = strings.Replace(x, "]", "", -1)
+    x = strings.Replace(x, `"`, "", -1)
+    return x
 }
 
