@@ -11,6 +11,5 @@ COPY --from=builder /go/bin/winmachineman /go/bin/winmachineman
 COPY commit.id commit.id
 COPY templates /templates
 COPY content /content
-COPY ../winnodemanager/winnodeman.exe /content
 EXPOSE 8080
 ENTRYPOINT ["/go/bin/winmachineman"]
