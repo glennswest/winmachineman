@@ -4,7 +4,7 @@ mkdir tmp
 echo $GIT_COMMIT > commit.id
 #eval $(minishift docker-env)
 rm content/winnodeman.exe
-cp ../winnodeman.exe content
+cp ../winnodemanager/winnodeman.exe content
 docker build --no-cache -t glennswest/winmachineman:$GIT_COMMIT .
 docker tag glennswest/winmachineman:$GIT_COMMIT  docker.io/glennswest/winmachineman:$GIT_COMMIT
 docker push docker.io/glennswest/winmachineman:$GIT_COMMIT
