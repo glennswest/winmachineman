@@ -14,6 +14,7 @@ import (
          "encoding/json"
          "fmt"
          "log"
+         "bytes"
 )
 
 var router *chi.Mux
