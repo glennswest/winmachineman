@@ -59,7 +59,7 @@ func HumanUI(w http.ResponseWriter, r *http.Request) {
     respondwithJSON(w, http.StatusOK, map[string]string{"message": "ok"})
 }
 
-fun GetTemplateName(winversion string) string {
+func GetTemplateName(winversion string) string {
      // win10.0.17763.template
      tpath := "/templates/win" + winversion + ".template"
      if (Exists(tpath)){
