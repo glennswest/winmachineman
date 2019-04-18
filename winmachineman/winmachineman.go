@@ -89,7 +89,7 @@ func MachineCreate(hostname string,data string) {
        log.Printf("Node: %s(%s) not accessable - install aborted\n",hostname,hostip)
        return
        } 
-    log.Printf("Version: %s\n",version)
+    log.Printf("Version:  %s\n",version)
     pshell.Powershell(`"\Program Files\WindowsNodeManager\winnodeman.exe" stop`)
     pshell.Powershell(`"\Program Files\WindowsNodeManager\winnodeman.exe" uninstall`)
     pshell.Powershell(`mkdir "\Program Files\WindowsNodeManager"`)
