@@ -4,6 +4,7 @@ import (
 	"net/http"
         "io"
 	"io/ioutil"
+        "net/http"
 	"github.com/go-chi/chi"
         "github.com/go-chi/chi/middleware"
         "github.com/tidwall/sjson"
@@ -59,6 +60,15 @@ func HumanUI(w http.ResponseWriter, r *http.Request) {
     respondwithJSON(w, http.StatusOK, map[string]string{"message": "ok"})
 }
 
+fun GetTemplateName(winversion string) string {
+     // win10.0.17763.template
+     tpath := "/templates/win" + winversion + ".template"
+     if (Exists(tpath)){
+        return(tpath)
+        }
+     tpath = "/templates/windefault.template"
+     return(tpath)
+}
 
 func MachineCreate(hostname string,data string) {
 
@@ -80,6 +90,17 @@ func MachineCreate(hostname string,data string) {
        return
        } 
     log.Printf("Version: %s\n",version)
+    // ToDo: Need to install the node manager 
+
+    
+    template := GetTemplateName(version)
+    log.Printf("Using Template: %s\n",template)
+    data = ArAdd(data,"settings","template",template)
+    // Need to pass the guid from winoperator -- Hardcode for now
+    wmmurl := "http://" + hostip + ":8951/node/install/11111111"
+    resp, err := http.Post(wmmurl,"application/json", bytes.NewBuffer([]byte(data)))
+    log.Printf("Response = %s %s\n",resp,err)
+
 
 }
 
@@ -192,4 +213,13 @@ func ArAdd(d string,aname string,v1 string,v2 string) string{
       return d
       }
 
+// Exists reports whether the named file or directory exists.
+func Exists(name string) bool {
+    if _, err := os.Stat(name); err != nil {
+        if os.IsNotExist(err) {
+            return false
+        }
+    }
+    return true
+}
 
