@@ -90,13 +90,13 @@ func MachineCreate(hostname string,data string) {
        return
        } 
     log.Printf("Version: %s\n",version)
-    pshell.Powershell(`\Program Files\WindowsNodeManager\winnodeman.exe stop`)
-    pshell.Powershell(`\Program Files\WindowsNodeManager\winnodeman.exe uninstall`)
-    pshell.Powershell(`mkdir \Program Files\WindowsNodeManager`)
-    cmd := "curl -L " + "http://" + myurl + "/content/winnodeman.exe -o " + `\Program Files\WindowsNodeManager\winnodeman.exe`
+    pshell.Powershell(`"\Program Files\WindowsNodeManager\winnodeman.exe" stop`)
+    pshell.Powershell(`"\Program Files\WindowsNodeManager\winnodeman.exe" uninstall`)
+    pshell.Powershell(`mkdir "\Program Files\WindowsNodeManager"`)
+    cmd := "curl -L " + "http://" + myurl + "/content/winnodeman.exe -o " + `"\Program Files\WindowsNodeManager\winnodeman.exe"`
     pshell.Powershell(cmd)
-    pshell.Powershell(`\Program Files\WindowsNodeManager\winnodeman.exe install`)
-    pshell.Powershell(`\Program Files\WindowsNodeManager\winnodeman.exe start`)
+    pshell.Powershell(`"\Program Files\WindowsNodeManager\winnodeman.exe" install`)
+    pshell.Powershell(`"\Program Files\WindowsNodeManager\winnodeman.exe" start`)
     
     template := GetTemplateName(version)
     log.Printf("Using Template: %s\n",template)
