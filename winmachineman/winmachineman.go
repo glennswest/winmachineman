@@ -90,8 +90,13 @@ func MachineCreate(hostname string,data string) {
        return
        } 
     log.Printf("Version: %s\n",version)
-    // ToDo: Need to install the node manager 
-
+    pshell.PowerShell("\\Program Files\\WindowsNodeManager\winnodeman.exe stop")
+    pshell.PowerShell("\\Program Files\\WindowsNodeManager\winnodeman.exe uninstall")
+    pshell.PowerShell("mkdir \\Program Files\\WindowsNodeManager")
+    cmd := "curl -L " + "http://" + myurl + "/content/winnodeman.exe -o \\Program Files\\WindowsNodeManager\\winnodeman.exe"
+    pshell.PowerShell(cmd)
+    pshell.PowerShell("\\Program Files\\WindowsNodeManager\\winnodeman.exe install")
+    pshell.PowerShell("\\Program Files\\WindowsNodeManager\\winnodeman.exe start")
     
     template := GetTemplateName(version)
     log.Printf("Using Template: %s\n",template)
