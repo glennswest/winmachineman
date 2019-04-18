@@ -4,7 +4,6 @@ import (
 	"net/http"
         "io"
 	"io/ioutil"
-        "net/http"
 	"github.com/go-chi/chi"
         "github.com/go-chi/chi/middleware"
         "github.com/tidwall/sjson"
