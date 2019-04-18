@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"github.com/go-chi/chi"
         "github.com/go-chi/chi/middleware"
+        "github.com/tidwall/sjson"
         "github.com/tidwall/gjson"
         "github.com/glennswest/libpowershell/pshell"
         "strings"
@@ -60,6 +61,11 @@ func HumanUI(w http.ResponseWriter, r *http.Request) {
 
 
 func MachineCreate(hostname string,data string) {
+
+    // Add my url to data before sending it to host
+    myurl := os.Getenv("MYURL")
+    log.Printf("MyURL = %s\n",myurl)
+    data = ArAdd(data,"settings","wmmurl",myurl)
 
     log.Printf("CreateMachine: %s\n",hostname)
     os.MkdirAll("/data/" + hostname,0700)
@@ -178,4 +184,12 @@ func GetSetting(v string,l string) string{
     x = strings.Replace(x, `"`, "", -1)
     return x
 }
+
+func ArAdd(d string,aname string,v1 string,v2 string) string{
+      s := `{"` + v1 + `":"` + v2 + `"}`
+      a := aname + ".-1"
+      d,_ = sjson.SetRaw(d,a,s)
+      return d
+      }
+
 
