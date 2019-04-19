@@ -6,5 +6,6 @@
   "packages": ["prewin1809_v1.0",
                "kube_v1.11.3",
                "ovn_16e1a3c",
-               "ovs_270beta"]
+               "ovs_2.70beta",
+               "cni_0.3.1"]
 }
