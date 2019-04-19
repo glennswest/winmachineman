@@ -89,14 +89,14 @@ func MachineCreate(hostname string,data string) {
        log.Printf("Node: %s(%s) not accessable - install aborted\n",hostname,hostip)
        return
        } 
-    log.Printf("Version: %s\n",version)
-    pshell.PowerShell("/Program` Files/WindowsNodeManager\winnodeman.exe stop")
-    pshell.PowerShell("/Program` Files/WindowsNodeManager\winnodeman.exe uninstall")
-    pshell.PowerShell("mkdir /Program` Files/WindowsNodeManager")
-    cmd := "curl -L " + "http://" + myurl + "/content/winnodeman.exe -o /Program` Files/WindowsNodeManager/winnodeman.exe"
-    pshell.PowerShell(cmd)
-    pshell.PowerShell("/Program` Files/WindowsNodeManager/winnodeman.exe install")
-    pshell.PowerShell("/Program` Files/WindowsNodeManager/winnodeman.exe start")
+    log.Printf("Version:  %s\n",version)
+    pshell.Powershell("\Program` Files\WindowsNodeManager\winnodeman.exe stop")
+    pshell.Powershell("\Program` Files\WindowsNodeManager\winnodeman.exe uninstall")
+    pshell.Powershell("mkdir \Program` Files\WindowsNodeManager")
+    cmd := "curl -L " + "http://" + myurl + "/content/winnodeman.exe -o " + "\Program` Files\WindowsNodeManager\winnodeman.exe"
+    pshell.Powershell(cmd)
+    pshell.Powershell("\Program` Files\WindowsNodeManager\winnodeman.exe install")
+    pshell.Powershell("\Program` Files\WindowsNodeManager\winnodeman.exe start")
     
     template := GetTemplateName(version)
     log.Printf("Using Template: %s\n",template)
