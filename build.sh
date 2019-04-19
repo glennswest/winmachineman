@@ -1,5 +1,5 @@
 cp ../winnodemanager/winnodeman.version content
-git add content/winnodeman.version
+git add -f content/winnodeman.version
 git commit -a -m "Update winnodeman version"
 export GIT_COMMIT=$(git rev-parse --short HEAD)
 rm -r -f tmp
