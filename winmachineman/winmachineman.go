@@ -91,7 +91,7 @@ func MachineCreate(hostname string,data string) {
        } 
     log.Printf("Version:  %s\n",version)
     result := pshell.Powershell("Test-Path -Path \"/Program` Files/WindowsNodeManager/winnodeman.exe\"")
-    if (result == "True"){
+    if (result[0:4] == "True"){
        log.Printf("Stopping existing winnodeman service\n")
        pshell.Powershell("/Program` Files/WindowsNodeManager/winnodeman.exe stop")
        pshell.Powershell("/Program` Files/WindowsNodeManager/winnodeman.exe uninstall")
