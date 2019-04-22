@@ -90,9 +90,16 @@ func MachineCreate(hostname string,data string) {
        return
        } 
     log.Printf("Version:  %s\n",version)
-    pshell.Powershell("/Program` Files/WindowsNodeManager/winnodeman.exe stop")
-    pshell.Powershell("/Program` Files/WindowsNodeManager/winnodeman.exe uninstall")
-    pshell.Powershell("mkdir /Program` Files/WindowsNodeManager")
+    result := pshell.Powershell("Test-Path -Path "/Program` Files/WindowsNodeManager/winnodeman.exe")
+    if (result == "true"){
+       log.Printf("Stopping existing winnodeman service\n")
+       pshell.Powershell("/Program` Files/WindowsNodeManager/winnodeman.exe stop")
+       pshell.Powershell("/Program` Files/WindowsNodeManager/winnodeman.exe uninstall")
+       } else {
+       log.Printf("Installing New winnodeman service\n")
+       pshell.Powershell("mkdir /Program` Files/WindowsNodeManager")
+       pshell.Powershell("netsh advfirewall firewall add rule name="WinNodeManager Interface tcp 8951" dir=in action=allow protocol=TCP localport=8951")
+       }
     cmd := "curl " + "http://" + myurl + "/content/winnodeman.exe -o " + "/Program` Files/WindowsNodeManager/winnodeman.exe"
     pshell.Powershell(cmd)
     pshell.Powershell("/Program` Files/WindowsNodeManager/winnodeman.exe install")
