@@ -110,7 +110,7 @@ func MachineCreate(hostname string,data string) {
     data = ArAdd(data,"settings","template",template)
     // Need to pass the guid from winoperator -- Hardcode for now
     wmmurl := "http://" + hostip + ":8951/node/install/11111111"
-    resp, err := http.Post(wmmurl,"application/json", bytes.NewBuffer([]byte(data)))
+    _, _ := http.Post(wmmurl,"application/json", bytes.NewBuffer([]byte(data)))
 
 
 }
