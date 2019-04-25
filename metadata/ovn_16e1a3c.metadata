@@ -5,24 +5,31 @@
   "install_message": "Using Kubeovn from https://github.com/glennswest/ovn-kubernetes - Commit 16e1a3c",
   "package_url":     "https://github.com/glennswest/ovn-kubernetes",
   "install": {
-      "priority": 100,
+      "lprecmds": [],
       "commands": [],
+      "lpstcmds": [],
       "reboot":   "no"
       }
   "uninstall": {
       "priority": 100,
+      "lprecmds": [],
       "commands": [],
+      "lpstcmds": [],
       "reboot":   "no"
       }
   "pre_upgrade": {
       "priority": 100,
       "uninstall": "no",
+      "lprecmds": [],
       "commands": [],
+      "lpstcmds": [],
       "reboot":   "no"
       }
   "post_upgrade": {
       "priority": 100,
+      "lprecmds": [],
       "commands": [],
+      "lpstcmds": [],
       "reboot":   "no"
       }
   "files": []

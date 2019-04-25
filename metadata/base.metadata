@@ -5,24 +5,31 @@
   "install_message": "",
   "package_url":     "",
   "install": {
-      "priority": 100,
+      "lprecmds": [],
       "commands": [],
+      "lpstcmds": [],
       "reboot":   "no"
       }
   "uninstall": {
       "priority": 100,
+      "lprecmds": [],
       "commands": [],
+      "lpstcmds": [],
       "reboot":   "no"
       }
   "pre_upgrade": {
       "priority": 100,
       "uninstall": "no",
+      "lprecmds": [],
       "commands": [],
+      "lpstcmds": [],
       "reboot":   "no"
       }
   "post_upgrade": {
       "priority": 100,
+      "lprecmds": [],
       "commands": [],
+      "lpstcmds": [],
       "reboot":   "no"
       }
   "files": []

@@ -12,19 +12,26 @@
       }
   "uninstall": {
       "priority": 100,
+      "lprecmds": [],
       "commands": [],
+      "lpstcmds": [],
       "reboot":   "no"
       }
   "pre_upgrade": {
       "priority": 100,
       "uninstall": "no",
+      "lprecmds": [],
       "commands": [],
+      "lpstcmds": [],
       "reboot":   "no"
       }
   "post_upgrade": {
       "priority": 100,
+      "lprecmds": [],
       "commands": [],
+      "lpstcmds": [],
       "reboot":   "no"
       }
   "files": []
 }
+
