@@ -99,7 +99,7 @@ func MachineCreate(hostname string,data string) {
        } else {
        log.Printf("Installing New winnodeman service\n")
        pshell.Powershell("mkdir /Program` Files/WindowsNodeManager")
-       pshell.Powershell("netsh advfirewall firewall add rule name=\"WinNodeManager Interface tcp 8951\" dir=in action=allow protocol=TCP localport=8951")
+       pshell.Powershell("netsh advfirewall firewall add rule name=WinNodeManager dir=in action=allow protocol=TCP localport=8951")
        }
     cmd := "curl " + "http://" + myurl + "/content/winnodeman.exe -o " + "/Program` Files/WindowsNodeManager/winnodeman.exe"
     pshell.Powershell(cmd)
