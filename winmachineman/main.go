@@ -9,7 +9,6 @@ import (
         "github.com/tidwall/sjson"
         "github.com/tidwall/gjson"
         "github.com/glennswest/libpowershell/pshell"
-        . "github.com/glennswest/go-sshclient"
         "strings"
          "os"
          "encoding/json"
