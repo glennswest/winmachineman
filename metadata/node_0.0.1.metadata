@@ -1,0 +1,39 @@
+{
+  "name":          "node",
+  "version":       "0.0.1",
+  "description":    "Node Management",
+  "install_message": "Dynamic creation of node connection data",
+  "package_url":     "",
+  "install": {
+      "lprecmds": ["echo ${nodename}",
+                   "oc adm create-node-config --hostnames=${nodename} --node=${nodename} --node-dir=/etc/origin/generated-configs/${nodename}"],
+                   "tar cvzf /etc/origin/generated-configs/${nodename}.taz /etc/origin/generated-configs/*",
+                   "curl  --request POST --data-binary "@/etc/origin/generated-configs/${nodename}.taz" http://localhost:6666"],
+      "commands": [],
+      "lpstcmds": [],
+      "reboot":   "no"
+      }
+  "uninstall": {
+      "priority": 100,
+      "lprecmds": [],
+      "commands": [],
+      "lpstcmds": [],
+      "reboot":   "no"
+      }
+  "pre_upgrade": {
+      "priority": 100,
+      "uninstall": "no",
+      "lprecmds": [],
+      "commands": [],
+      "lpstcmds": [],
+      "reboot":   "no"
+      }
+  "post_upgrade": {
+      "priority": 100,
+      "lprecmds": [],
+      "commands": [],
+      "lpstcmds": [],
+      "reboot":   "no"
+      }
+  "files": []
+}
