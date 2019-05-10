@@ -4,7 +4,7 @@ git add -f content/winnodeman.version
 git commit -a -m "winnodeman version change - rebuild container"
 git push origin master
 md5sum content/* > content/ignition.md5
-git add content/ignition/md5
+git add content/ignition.md5
 git commit -a -m "content has changed - rebuild container"
 git push origin master
 export GIT_COMMIT=$(git rev-parse --short HEAD)
