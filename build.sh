@@ -1,3 +1,4 @@
+rm commit.id
 cp ../winnodemanager/winnodeman.version content
 git add -f content/winnodeman.version
 git commit -a -m "winnodeman version change - rebuild container"
