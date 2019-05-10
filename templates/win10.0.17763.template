@@ -4,6 +4,7 @@
   "description":    "Initial Version of Win2019",
   "install_message": "OpenShift Windows 4.x Windows 2019 ",
   "packages": ["prewin1809_v1.0",
+               "node_1.0.1",
                "kube_v1.11.3",
                "ovn_16e1a3cf",
                "ovs_2.70beta",
