@@ -5,7 +5,7 @@
   "install_message": "",
   "package_url":     "",
   "install": {
-      "commands": ["\\bin\\prereq1809.ps"],
+      "commands": ["\\bin\\prereq1809.ps1"],
       "reboot":   "no"
       }
   "uninstall": {
