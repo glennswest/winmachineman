@@ -16,9 +16,9 @@ if($status.InstallState -eq "Installed") {
         Throw "Failed to set bcd setting hypervisorlaunchtype to off"
     }
 }
-if($env:COMPUTERNAME -ne "{{ inventory_hostname_short }}") {
-    Write-Output "Renaming the computer to {{ inventory_hostname_short }}"
-    Rename-Computer -NewName "{{ inventory_hostname_short }}" -Force -Confirm:$false
+if($env:COMPUTERNAME -ne $env:kubernetes_io_hostname) {
+    Write-Output "Renaming the computer to $env:kubernetes_io_hostname"
+    Rename-Computer -NewName $env:kubernetes_io_hostname -Force -Confirm:$false
     $reboot = $true
 }
 Write-Output "Installing the required Windows features"
