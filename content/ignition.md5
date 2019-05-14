@@ -4,6 +4,6 @@ cf6cf389fb0ec70663650915cf5ad5ab  content/kube_v1.11.3.ign
 3718bc08516bc9585958c84015550caa  content/node_1.0.1.ign
 18643a9609e3c369ef46625796af383f  content/ovn_16e1a3cf.ign
 005308f4aec17283d768ace47faad854  content/ovs_2.70beta.ign
-613149c814fa80bc646dde20aa74a375  content/prewin1809_v1.0.ign
-5fbacbeec1bb33f60cb37b67cddddc97  content/winnodeman.exe
-8235e8889c9f0b2f3baea235db9cf995  content/winnodeman.version
+df062cbe03101719364d29aaa9bf2b45  content/prewin1809_v1.0.ign
+7c1c222862bdb49d549a46f20e208945  content/winnodeman.exe
+34843b6818e78acf463dde1ac38d6f4f  content/winnodeman.version
