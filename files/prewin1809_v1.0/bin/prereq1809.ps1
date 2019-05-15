@@ -40,6 +40,6 @@ $updates | ForEach-Object {
 # Reboot if needed
 if($reboot) {
     Write-Output "Rebooting computer"
-    Restart-Computer -
+    Restart-Computer 
 }
 
