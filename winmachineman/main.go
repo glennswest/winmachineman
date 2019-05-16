@@ -89,7 +89,7 @@ func MachineCreate(hostname string,data string) {
        log.Printf("Node: %s(%s) not accessable - install aborted\n",hostname,hostip)
        return
        } 
-    log.Printf("Version:  %s\n",version)
+    log.Printf("Version: %s\n",version)
     result := pshell.Powershell("Test-Path -Path \"/Program` Files/WindowsNodeManager/winnodeman.exe\"")
     if (result[0:4] == "True"){
        log.Printf("Stopping existing winnodeman service\n")
