@@ -74,7 +74,7 @@ func MachineCreate(hostname string,data string) {
 
     // Add my url to data before sending it to host
     myurl := os.Getenv("MYURL")
-    log.Printf("MyURL = %s\n",myurl)
+    log.Printf("MyURL =  %s\n",myurl)
     data = ArAdd(data,"settings","wmmurl",myurl)
 
     log.Printf("CreateMachine: %s\n",hostname)
