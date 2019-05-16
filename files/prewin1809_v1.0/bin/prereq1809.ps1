@@ -40,6 +40,7 @@ $updates | ForEach-Object {
 # Reboot if needed
 if($reboot) {
     Write-Output "Rebooting computer"
-    Restart-Computer -Force
+    Restart-Computer -Force -Delay 0
+    Start-Sleep -s 60
 }
 
