@@ -1,9 +1,9 @@
 $ErrorActionPreference = "Stop"
 $DOCKER_SERVICE_NAME = "Docker"
-Write-Output "Installing Docker {{ windows_docker_version }}"
 Find-PackageProvider -Name "Nuget" | Install-PackageProvider -Force
 Install-Module -Name "DockerMsftProvider" -Repository "PSGallery" -Force
 Install-Package -Name "Docker" -ProviderName "DockerMsftProvider" -Force 
+Start-Sleep -s 30
 Set-Service $DOCKER_SERVICE_NAME -StartupType Disabled
 Stop-Service $DOCKER_SERVICE_NAME
 Get-HnsNetwork | Where-Object { $_.Name -eq "nat" } | Remove-HnsNetwork
