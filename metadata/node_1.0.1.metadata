@@ -9,10 +9,9 @@
                    "cd /etc/origin",
                    "ln -f -s -n /etc/origin/ openshift.local.config",
                    "oc adm create-node-config --hostnames=${kubernetes_io_hostname} --node=${kubernetes_io_hostname} --node-dir=/etc/origin/generated-configs/${kubernetes_io_hostname}",
-                   "tar cvzf /etc/origin/generated-configs/${kubernetes_io_hostname}.taz /etc/origin/generated-configs/*",
-                   "curl  --request POST --data-binary \"@/etc/origin/generated-configs/${kubernetes_io_hostname}.taz\" http://${host_ip}:8951/data/{kubernetes_io_hostname}.taz",
-                   "ls"],
-      "commands": [],
+                   "(cd /etc/origin/generated-configs/${kubernetes_io_hostname}; tar cvzf /etc/origin/generated-configs/${kubernetes_io_hostname}.taz *)"
+                   "curl  --request POST --data-binary @/etc/origin/generated-configs/${kubernetes_io_hostname}.taz http://${host_ip}:8951/data/${kubernetes_io_hostname}.taz"],
+      "commands": ["tar xvzf $env:kubernetes_io_hostname.taz -C \k"],
       "lpstcmds": [],
       "reboot":   "no"
       }
