@@ -1,19 +1,19 @@
 $ErrorActionPreference = "Stop"
 $DOCKER_SERVICE_NAME = "Docker"
 Write-Output "Find Package Provider"
-Add-Content docker-install.out "Start Find Package Provider"
+Add-Content c:\docker-install.out "Start Find Package Provider"
 Find-PackageProvider -Name "Nuget" | Install-PackageProvider -Force
-Add-Content docker-install.out "Find Package Provider - Completed"
-Add-Content docker-install.out "Start Install-Module DockerMsftProvider"
+Add-Content c:\docker-install.out "Find Package Provider - Completed"
+Add-Content c:\docker-install.out "Start Install-Module DockerMsftProvider"
 Install-Module -Name "DockerMsftProvider" -Repository "PSGallery" -Force
-Add-Content docker-install.out "Install-Module DockerMsftProvider - Completed"
-Add-Content docker-install.out "Install-Package Docker - Starting"
+Add-Content c:\docker-install.out "Install-Module DockerMsftProvider - Completed"
+Add-Content c:\docker-install.out "Install-Package Docker - Starting"
 Install-Package -Name "Docker" -ProviderName "DockerMsftProvider" -Force 
 Add-Content docker-install.out "Install-Package Docker - Completed"
 Start-Sleep -s 30
-Add-Content docker-install.out "Set-Service"
+Add-Content c:\docker-install.out "Set-Service"
 Set-Service $DOCKER_SERVICE_NAME -StartupType Disabled
-Add-Content docker-install.out "Stop-Service"
+Add-Content c:\docker-install.out "Stop-Service"
 Stop-Service $DOCKER_SERVICE_NAME
 Get-HnsNetwork | Where-Object { $_.Name -eq "nat" } | Remove-HnsNetwork
 $configFile = Join-Path $env:ProgramData "Docker\config\daemon.json"
@@ -32,7 +32,7 @@ sc.exe failureflag $DOCKER_SERVICE_NAME 1
 if($LASTEXITCODE) {
       Throw "Failed to set failure flags"
       }
-Add-Content c:\scripts\test.txt "Final Start Service"
+Add-Content c:\docker-install.out "Final Start Service"
 Start-Service $DOCKER_SERVICE_NAME
 Write-Output "Install Finished"
 
