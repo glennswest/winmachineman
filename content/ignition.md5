@@ -2,7 +2,7 @@ e1adbc91203ae7f497c83c918710767d  content/cni_0.3.1.ign
 e5c8cea5a4151cde226ca8b6128ca551  content/docker_v1.0.1.ign
 d41d8cd98f00b204e9800998ecf8427e  content/ignition.md5
 cf6cf389fb0ec70663650915cf5ad5ab  content/kube_v1.11.3.ign
-92b21f5fd6f3940cc3ddf3091895ebff  content/node_1.0.1.ign
+f58b8b68b771e53b87e7ac4c53ff1964  content/node_1.0.1.ign
 18643a9609e3c369ef46625796af383f  content/ovn_16e1a3cf.ign
 005308f4aec17283d768ace47faad854  content/ovs_2.70beta.ign
 12a5f3f7c28c804868e2e993e51fb298  content/prewin1809_v1.0.ign
