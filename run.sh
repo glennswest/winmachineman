@@ -17,4 +17,4 @@ oc new-app glennswest/$pname:$GIT_COMMIT --token=$(oc sa get-token $pname)
 export defaultdomain=$(oc describe route docker-registry --namespace=default | grep "Requested Host" | cut -d ":" -f 2 | cut -d "." -f 2-)
 oc expose svc/winmachineman --hostname=winmachineman.$defaultdomain
 #oc set env dc/winmachineman MYURL=winmachineman.$defaultdomain
-oc set env dc/winmachineman  MYURL=raw.githubusercontent.com/glennswest/wcontent/master
+oc set env dc/winmachineman  MYURL=https://raw.githubusercontent.com/glennswest/wcontent/master
