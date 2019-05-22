@@ -10,7 +10,7 @@ cp -a files/ovs_$VERSION/* wip
 cp metadata/ovs_$VERSION.metadata wip/bin/metadata/ovs_$VERSION.metadata
 (cd wip;$GOPATH/src/github.com/glennswest/libignition/igntool/igntool um ../content/ovs_$VERSION.ign bin/metadata/ovs_$VERSION.metadata)
 (cd wip;$GOPATH/src/github.com/glennswest/libignition/igntool/igntool a ../content/ovs_$VERSION.ign bin/metadata)
-$GOPATH/src/github.com/glennswest/libignition/igntool/igntool ls content/kube_$VERSION.ign
+$GOPATH/src/github.com/glennswest/libignition/igntool/igntool ls content/ovs_$VERSION.ign
 cat wip/bin/metadata/ovs_$VERSION.metadata
 $GOPATH/src/github.com/glennswest/libignition/igntool/igntool ls content/ovs_$VERSION.ign
 #rm -r -f wip/bin

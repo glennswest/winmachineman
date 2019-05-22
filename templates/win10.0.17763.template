@@ -6,8 +6,9 @@
   "packages": ["prewin1809_v1.0",
                "docker_v1.0.1",
                "node_1.0.1",
-               "kube_v1.11.3",
                "ovn_16e1a3cf",
                "ovs_2.70beta",
-               "cni_0.3.1"]
+               "cni_0.3.1",
+               "kube_v1.11.3"
+               ]
 }

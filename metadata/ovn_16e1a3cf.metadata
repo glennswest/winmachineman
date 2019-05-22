@@ -5,8 +5,15 @@
   "install_message": "Using Kubeovn from https://github.com/glennswest/ovn-kubernetes - Commit 16e1a3c",
   "package_url":     "https://github.com/glennswest/ovn-kubernetes",
   "install": {
-      "lprecmds": [],
-      "commands": [],
+      "lprecmds": ["oc create serviceaccount ovn",
+                   "oc adm policy add-scc-to-user privileged -z ovn",
+                   "oc adm policy add-cluster-role-to-user cluster-admin -z ovn",
+                   "mkdir -f /root/.keys",
+                   "oc sa get-token ovn > /root/.keys/ovn.key",
+                   "export IDATA=@//root/.keys/ovn.key",
+                   "export ODATA=http://${host_ip}:8951/data/ovn.key",
+                   "curl  --retry 10 --show-error --verbose --request POST --data-binary $IDATA $ODATA" ],
+      "commands": ["/bin/ovn-setup.ps1"],
       "lpstcmds": [],
       "reboot":   "no"
       }

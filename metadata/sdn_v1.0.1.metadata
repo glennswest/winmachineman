@@ -1,12 +1,15 @@
 {
-  "name":          "kube",
-  "version":       "v1.11.3",
-  "description":    "Kubernetes (K8s) is an open-source system for automating deployment, scaling, and management of containerized applications.",
+  "name":          "sdn",
+  "version":       "v1.0.1",
+  "description":    "Software Defined Network Setup",
   "install_message": "",
-  "package_url":     "https://dl.k8s.io/$VERSION/kubernetes-node-windows-amd64.tar.gz",
+  "package_url":     "",
   "install": {
+      "priority": 100,
       "lprecmds": [],
-      "commands": ["/bin/start_kubelet.ps1"],
+      "commands": ["$Env:ovs_network_name="external",
+                   "echo $Env:ovn_host_subnet > /k/host.subnet",
+                   "/bin/setup_sdn.ps1 -OVSNetworkName $Env:ovs_network_name -SubnetFile /k/host.subnet"],
       "lpstcmds": [],
       "reboot":   "no"
       }

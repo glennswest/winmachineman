@@ -15,7 +15,7 @@
                    "curl  --retry 10 --show-error --verbose --request POST --data-binary $IDATA $ODATA",
                    "sleep 10"],
       "commands": ["$Env:TFILE=\"/Program Files/WindowsNodeManager/data/\" + $Env:kubernetes_io_hostname + \".taz\"",
-                    "tar xvzf $Env:Tfile -C /k"],
+                    "tar xvzf $Env:TFILE -C /k"],
       "lpstcmds": [],
       "reboot":   "no"
       }
