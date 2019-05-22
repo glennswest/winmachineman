@@ -9,7 +9,5 @@ VOLUME /tmp
 WORKDIR /root/
 COPY --from=builder /go/bin/winmachineman /go/bin/winmachineman
 COPY commit.id commit.id
-COPY templates /templates
-COPY content /content
 EXPOSE 8080
 ENTRYPOINT ["/go/bin/winmachineman"]
