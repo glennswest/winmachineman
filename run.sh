@@ -18,4 +18,4 @@ export defaultdomain=$(oc describe --namespace=openshift-ingress-operator ingres
 oc expose svc/winmachineman --hostname=winmachineman.$defaultdomain
 sleep 20
 #oc set env dc/winmachineman  MYURL=https://media.githubusercontent.com/media/glennswest/wcontent/master
-oc set env dc/winmachineman MYURL=winoperatordata.$defaultdomain
+oc set env dc/winmachineman MYURL=http://winoperatordata.$defaultdomain
