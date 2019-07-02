@@ -2,6 +2,7 @@ git pull
 export GIT_COMMIT=$(git rev-parse --short HEAD)
 echo $GIT_COMMIT
 export pname=winmachineman
+oc project $pname
 oc delete dc $pname
 oc delete is $pname
 oc delete sa $pname
