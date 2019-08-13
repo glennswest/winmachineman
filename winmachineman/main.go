@@ -98,7 +98,7 @@ func MachineCreate(hostname string,data string) {
        } else {
        log.Printf("Installing New winnodeman service\n")
        pshell.Powershell("mkdir /Program` Files/WindowsNodeManager")
-       pshell.Powershell("Disable-NetAdapterBinding -InterfaceAlias \"Ethernet0\" -ComponentID ms_tcpip6")
+       pshell.Powershell("Get-NetAdapter | foreach { Disable-NetAdapterBinding -InterfaceAlias $_.Name -ComponentID ms_tcpip6 }")
        pshell.Powershell("netsh advfirewall firewall add rule name=WinNodeManager dir=in action=allow protocol=TCP localport=8951")
        }
     cmd := "curl " +  myurl + "/content/winnodeman.exe -o " + "/Program` Files/WindowsNodeManager/winnodeman.exe"
